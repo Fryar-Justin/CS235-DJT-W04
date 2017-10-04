@@ -5,7 +5,7 @@
  *    This will contain just the prototype for nowServing(). You may
  *    want to put other class definitions here as well.
  * Author
- *    <your names here>
+ *    Devin Cenatiempo
  ************************************************************************/
 
 #ifndef NOW_SERVING_H
@@ -27,15 +27,17 @@ private:
    int minutes;
    bool emergency;
 public:
+   //constructors
    Request() {course = ""; name = ""; minutes = 0; emergency = 0; }
    Request( string course, string name, int minutes, bool emergency )
    { this->course = course; this->name = name; this->minutes = minutes; this->emergency = emergency; }
-   
+   //getters
    string getCourse() { return course; }
    string getName() { return name; }
    int getMinute() { return minutes; }
-   void subtractMinute() { minutes--; }
    bool isEmergency() { return emergency; }
+   //setters
+   void subtractMinute() { minutes--; }
 };
 
 

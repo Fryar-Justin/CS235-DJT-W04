@@ -1,13 +1,14 @@
 ###############################################################
 # Program:
 #     Assignment 04, DEQUE
-#     Brother XXXXX, CS235
+#     Brother JonesL, CS235
 # Author:
-#     <your name here>
+#     Devin Cenatiempo
 # Summary:
-#     <put a description here>
+#     Implements the deque class (stack + queue)
+#     Also uses the deque class in a Lab line simulation
 # Time:
-#     <how long did it take to complete this program>?
+#     It took me about 5 hours to create this program
 ###############################################################
 
 ##############################################################

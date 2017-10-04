@@ -5,7 +5,7 @@
  *    This will contain the deque class that is similar to the deque
  *    class, except it is FIFO/LILO
  * Author
- *    Devin Cenatiempo, Justin Fryar, Tyler Austin
+ *    Devin Cenatiempo
  ************************************************************************/
 
 #ifndef deque_h
@@ -146,9 +146,9 @@ namespace custom
    int deque <T> :: iFrontNormalized() const
    {
       if (iFront >= 0)
-      return iFront % numCapacity;
-      else
-      return iFront + numCapacity + (-iFront/(numCapacity+1)) * numCapacity;
+         return iFront % numCapacity;
+      else //if iFront has wrapped from left to right side
+         return iFront + numCapacity + (-iFront/(numCapacity+1)) * numCapacity;
    }
    
    /*****************************************************
@@ -160,9 +160,9 @@ namespace custom
    int deque <T> :: iBackNormalized() const
    {
       if (iBack >= 0)
-      return iBack % numCapacity;
-      else
-      return iBack + numCapacity + (-iBack/(numCapacity+1)) * numCapacity;
+         return iBack % numCapacity;
+      else // if iBack has wrapped from left to right side
+         return iBack + numCapacity + (-iBack/(numCapacity+1)) * numCapacity;
    }
    /*****************************************************
     * deque :: PUSH_BACK
@@ -212,11 +212,6 @@ namespace custom
       //attempt to allocate memory
       iBack++;
       this->data[iBackNormalized()] = data;
-      
-      //std::cerr << "elements: " << size() << "/" << numCapacity << std::endl;
-      //std::cerr << "push: " << numPush << ", pop: " << numPop << std::endl;
-      //std::cerr << "iHead: " << this->data[iHead()] << " at index " << iHead() << std::endl;
-      //std::cerr << " iTail: " << this->data[iTail()] << " at index " << iTail() << std::endl;
    }
    
    /*****************************************************
@@ -267,11 +262,6 @@ namespace custom
       //attempt to allocate memory
       iFront--;
       this->data[iFrontNormalized()] = data;
-      
-      //std::cerr << "elements: " << size() << "/" << numCapacity << std::endl;
-      //std::cerr << "push: " << numPush << ", pop: " << numPop << std::endl;
-      //std::cerr << "iHead: " << this->data[iHead()] << " at index " << iHead() << std::endl;
-      //std::cerr << " iTail: " << this->data[iTail()] << " at index " << iTail() << std::endl;
    }
    
    /*****************************************************

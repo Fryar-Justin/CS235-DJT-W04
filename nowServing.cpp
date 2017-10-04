@@ -5,7 +5,7 @@
  *    This will contain the implementation for nowServing() as well as any
  *    other function or class implementations you may need
  * Author
- *    <your names here>
+ *    Devin Cenatiempo
  **********************************************************************/
 
 #include <iostream>     // for ISTREAM, OSTREAM, CIN, and COUT
@@ -16,13 +16,19 @@
 using namespace std;
 using namespace custom;
 
+/************************************************
+ * DISPLAY
+ * Displays currently served customer
+ ***********************************************/
 void display(Request current){
-   //Currently serving Sam for class CS124. Time left: 1
-   //Emergency for Steve for class CS124. Time left: 2
+
+
    if (current.isEmergency())
       cout << "\tEmergency for ";
+      //Emergency for Steve for class CS124. Time left: 2
    else
       cout << "\tCurrently serving ";
+      //Currently serving Sam for class CS124. Time left: 1
    cout << current.getName() << " for class "
    << current.getCourse() << ". Time left: "
    << current.getMinute() << endl;
@@ -50,7 +56,7 @@ void nowServing()
    int time = 0;
    
    deque <Request> labLine(4);
-   Request current;
+   Request current; // initializes with a request with zero minutes
    
    try
    {
@@ -72,26 +78,30 @@ void nowServing()
             cin >> course;
             cin >> name;
             cin >> minutes;
-            // add new request to the back of the deque
             labLine.push_front(Request(course, name, minutes, 1));
          }
          else
          {
+            // need to add validation/error handling
             cin >> name;
             cin >> minutes;
             // add new request to the back of the deque
+            // instructions parameter is being used for course in this case
             labLine.push_back(Request(instruction, name, minutes, 0));
          }
+         // only move a request from labLine to current if there is someone in line
          if ( current.getMinute() == 0 && !labLine.empty() )
          {
             current = labLine.front();
             labLine.pop_front();
          }
+         // if current request has zero minutes, don't display it!!!
          if (current.getMinute())
          {
             display(current);
             current.subtractMinute();
          }
+         // time marches on!
          time++;
       }
       while (instruction != "finished");
