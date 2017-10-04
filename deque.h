@@ -5,7 +5,7 @@
  *    This will contain the deque class that is similar to the deque
  *    class, except it is FIFO/LILO
  * Author
- *    Devin Cenatiempo
+ *    Devin B Cenatiempo
  ************************************************************************/
 
 #ifndef deque_h
